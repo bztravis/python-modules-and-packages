@@ -12,7 +12,13 @@ and used within the module).
 https://docs.python.org/3/reference/simple_stmts.html#module.__all__
 """
 
-__all__ = ["first", "second"]
+from .first import add  # necessary for main's from complex_module import add to work
+print(__path__)  # ['/Users/bztravis88/Developer/pythonTest/complex_module']
+__all__ = ["first", "second", "shadowed_identifier"]
+
+
+def shadowed_identifier():
+    print("This function will be imported by a consumer importing * from complex_module")
 
 # for backwards compatibility, also import
 # from .first import *
